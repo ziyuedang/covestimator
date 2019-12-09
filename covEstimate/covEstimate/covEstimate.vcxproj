@@ -93,10 +93,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>D:\SFM\covestimator\covEstimate\third party;D:\SFM\covestimator\covEstimate\third party\third_party;D:\SFM\covestimator\covEstimate\third party\third_party\jpeg;D:\SFM\covestimator\covEstimate\third party\third_party\eigen;D:\SFM\covestimator\covEstimate\third party\third_party\png;D:\SFM\covestimator\covEstimate\third party\third_party\tiff;D:\SFM\covestimator\covEstimate\third party\third_party\eigen\Eigen;D:\SFM\covestimator\covEstimate\third party\SiftDetectorLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <SuppressStartupBanner>false</SuppressStartupBanner>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>D:\SFM\covestimator\covEstimate\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>openMVG_features.lib;openMVG_image.lib;opencv_world412.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>openMVG_features.lib;openMVG_image.lib;opencv_world412.lib;openMVG_jpeg.lib;openMVG_png.lib;openMVG_tiff.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>LinkVerbose</ShowProgress>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -120,12 +122,14 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>D:\SFM\covestimator\covEstimate\third party;D:\SFM\covestimator\covEstimate\third party\third_party;D:\SFM\covestimator\covEstimate\third party\third_party\jpeg;D:\SFM\covestimator\covEstimate\third party\third_party\eigen;D:\SFM\covestimator\covEstimate\third party\third_party\png;D:\SFM\covestimator\covEstimate\third party\third_party\tiff;D:\SFM\covestimator\covEstimate\third party\third_party\eigen\Eigen;D:\SFM\covestimator\covEstimate\third party\SiftDetectorLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>D:\SFM\covestimator\covEstimate\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>openMVG_features.lib;openMVG_image.lib;opencv_world412.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>openMVG_features.lib;openMVG_image.lib;opencv_world412.lib;openMVG_jpeg.lib;openMVG_png.lib;openMVG_tiff.lib;openMVG_zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>NotSet</ShowProgress>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,22 +1,13 @@
 #include "CovEstimator.h"
 
 using namespace std;
+using namespace cv;
 
 #define PI		3.14159265f
 
-using namespace cv;
-
-const Mat* CovEstimator::getImageFromPyramid(int octv, int intvl) {
-
-	/* Interpolation between layers based on the parameter subscale would be possible here,
-	but not implemented.
-	*/
-	return detecPyr[octv][intvl];
-}
 
 
-
-Mat* CovEstimator::getCovAt(float x, float y, float scale) {
+MatCv CovEstimator::getCovAt(MatCv dog, float x, float y, float scale) {
 
 	// Retrieve the octave and interval the feature was detected at
 	int octv = 0, intv = 0, row = 0, col = 0;
@@ -34,13 +25,9 @@ Mat* CovEstimator::getCovAt(float x, float y, float scale) {
 		col = cvRound(x / pow(2.0, octv - 1));
 		row = cvRound(y / pow(2.0, octv - 1));
 
-
-	// extract right image from pyramid
-	const Mat* img = getImageFromPyramid(octv, intv);
-
 	// determine hessan at that point and calculate and scale covariance matrix
-	this->H = hessian(img, row, col);
-	cvInvert(this->H, this->cov, CV_SVD_SYM);
+	H = hessian(dog, row, col);
+	invert(H, cov, DECOMP_SVD);
 
 	// Hessian is estimated at particular octave and interval, thus scaling needed, which
 	// adapts for the octave and subinterval
@@ -48,12 +35,11 @@ Mat* CovEstimator::getCovAt(float x, float y, float scale) {
 	// double norm = cvNorm( cov, 0, CV_L2 );
 	// cvScale( cov, cov, pow(scale, 2) / norm );
 	/*** or fixed value: */
-
-		cvScale(cov, cov, pow(2.0f, (octv + subintv / intervals) * 2) * 0.01);
-
-	cvSVD(this->cov, this->evals, this->evecs);
-	ev1 = evals->at<float>(0, 0);
-	ev2 = evals->at<float>,(1, 0);
+	cov.convertTo(cov, -1, pow(2.0f, (octv + subintv / intervals) * 2) * 0.01);
+	MatCv evals, evecs, vt;
+	SVD::compute(cov, evals, evecs, vt);
+	ev1 = evals.at<float>(0, 0);
+	ev2 = evals.at<float>(1, 0);
 	if (ev1 < 0 && ev2 < 0) {
 		ev1 = -ev1;
 		ev2 = -ev2;
@@ -67,11 +53,11 @@ Mat* CovEstimator::getCovAt(float x, float y, float scale) {
 		cout << "COV Eigenvalue of Hessian is negativ or zero(!)" << endl;
 	}
 
-	return this->cov;
+	return cov;
 }
 
 
-Mat* CovEstimator::hessian(const Mat* dog, int row, int col) {
+MatCv CovEstimator::hessian(MatCv dog, int row, int col) {
 
 	int r, c;
 	/*	r = row; c = col;
@@ -94,22 +80,21 @@ Mat* CovEstimator::hessian(const Mat* dog, int row, int col) {
 	for (int i = 0; i < 3; i++)
 		for (int j = 0; j < 3; j++) {
 			r = row + (j - 1); c = col + (i - 1);
-			v = CV_IMAGE_ELEM(dog, float, r, c);
-			dxx += w[i][j] * (CV_IMAGE_ELEM(dog, float, r, c + 1) +
-				CV_IMAGE_ELEM(dog, float, r, c - 1) - 2 * v);
-			dyy += w[i][j] * (CV_IMAGE_ELEM(dog, float, r + 1, c) +
-				CV_IMAGE_ELEM(dog, float, r - 1, c) - 2 * v);
-			dxy += w[i][j] * (CV_IMAGE_ELEM(dog, float, r + 1, c + 1) -
-				CV_IMAGE_ELEM(dog, float, r + 1, c - 1) -
-				CV_IMAGE_ELEM(dog, float, r - 1, c + 1) +
-				CV_IMAGE_ELEM(dog, float, r - 1, c - 1)) / 4.0f;
+			v = dog.at<float>(r, c);
+			dxx += w[i][j] * (dog.at<float>(r, c + 1) +
+				dog.at<float>(r, c - 1) - 2 * v);
+			dyy += w[i][j] * (dog.at<float>(r + 1, c) +
+				dog.at<float>(r - 1, c) - 2 * v);
+			dxy += w[i][j] * (dog.at<float>(r + 1, c + 1) -
+				dog.at<float>(r + 1, c - 1) -
+				dog.at<float>(r - 1, c + 1) +
+				dog.at<float>(r - 1, c - 1)) / 4.0f;
 
 		}
-
-	cvmSet(H, 0, 0, -dxx);
-	cvmSet(H, 0, 1, -dxy);
-	cvmSet(H, 1, 0, -dxy);
-	cvmSet(H, 1, 1, -dyy);
+	H.at<float>(0, 0) = -dxx;
+	H.at<float>(0, 1) = -dxy;
+	H.at<float>(1, 0) = -dxy;
+	H.at<float>(1, 1) = -dyy;
 
 	return H;
 }

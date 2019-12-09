@@ -9,7 +9,6 @@
 
 //opencv
 #include <opencv2/imgcodecs.hpp>
-#include <opencv2/imgcodecs/imgcodecs_c.h>
 
 //openMVG
 #include "openMVG/image/image_container.hpp"
@@ -30,10 +29,12 @@ using namespace openMVG;
 using namespace openMVG::image;
 using namespace openMVG::features;
 using namespace openMVG::features::sift;
+using MatCv = cv::Mat;
 
 // Define a feature and a container of features
 using Feature_T = SIOPointFeature;
 using Feats_T = vector<Feature_T>;
+
 
 int main(int argc, char* argv[])
 {
@@ -100,12 +101,9 @@ int main(int argc, char* argv[])
 
 	/*** Creating image pyramid in IplImage ***/
 	int octaves = 0, intervals = 3;
-	IplImage*** dog_pyr;
+	Image<unsigned char> dog_in;
+	vector<vector<MatCv>> dog_pyr;
 	octaves = 6;
-	dog_pyr = (IplImage***)calloc(octaves, sizeof(IplImage**));
-	for (int i = 0; i < octaves; i++) {
-		dog_pyr[i] = (IplImage**)calloc(intervals + supplementary_images - 1, sizeof(IplImage*));
-	}
 	// Read DoGs from  imagefiles 
 
 	for (int o = 0; o < octaves; o++) {
@@ -113,18 +111,19 @@ int main(int argc, char* argv[])
 		{	
 			stringstream str;
 			str << "DoG_out_00" << to_string(o) << "_s" << "00" << i << ".png";
-			dog_pyr[o][i] = cvLoadImage(str.str().c_str(), CV_LOAD_IMAGE_COLOR);
-			cout << dog_pyr[o][i] << endl;
+			// testing this
+			dog_pyr[o][i] = cv::imread(str.str().c_str(), cv::IMREAD_UNCHANGED);
 		}
 	}
+	cout << "size of dog_pyr is: " << dog_pyr.size() << endl;
 	string filename_out = filename + ".cov";
 	ofstream& outfile = CovOut::initializeFile(filename_out);
 	/*** Estimating the covariances for the keypoints ***/
 	if (arg.verbose)
 		cout << "COV Covariance estimation - Writing data to file " << filename << endl;
-	CovEstimator estimator((const IplImage***)dog_pyr, octaves, intervals);
+	CovEstimator estimator(dog_pyr, octaves, intervals);
 	for (unsigned int k = 0; k < vec_feats.size(); k++) {
-		CvMat* cov = estimator.getCovAt(vec_feats[k].x(), vec_feats[k].y(), vec_feats[k].scale());	
+		MatCv cov = estimator.getCovAt(dog_pyr, vec_feats[k].x(), vec_feats[k].y(), vec_feats[k].scale());	
 		cout << cov << endl;
 		// Output cov to file
 		CovOut::write(outfile, cov);
