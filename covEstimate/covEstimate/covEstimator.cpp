@@ -5,9 +5,13 @@ using namespace cv;
 
 #define PI		3.14159265f
 
+const MatCv CovEstimator::getImageFromPyramid(int octv, int intvl) {
+	/* Return the dog layer corresponding to the correct octave and interval.
+	*/
+	return detectPyr[octv][intvl];
+}
 
-
-MatCv CovEstimator::getCovAt(MatCv dog, float x, float y, float scale) {
+MatCv CovEstimator::getCovAt(float x, float y, float scale) {
 
 	// Retrieve the octave and interval the feature was detected at
 	int octv = 0, intv = 0, row = 0, col = 0;
@@ -24,9 +28,10 @@ MatCv CovEstimator::getCovAt(MatCv dog, float x, float y, float scale) {
 		// location calculation: feat->x = ( c + xc ) * pow( 2.0, octv );
 		col = cvRound(x / pow(2.0, octv - 1));
 		row = cvRound(y / pow(2.0, octv - 1));
+		MatCv img = getImageFromPyramid(octv, intv);
 
 	// determine hessan at that point and calculate and scale covariance matrix
-	H = hessian(dog, row, col);
+	H = hessian(img, row, col);
 	invert(H, cov, DECOMP_SVD);
 
 	// Hessian is estimated at particular octave and interval, thus scaling needed, which
@@ -58,20 +63,8 @@ MatCv CovEstimator::getCovAt(MatCv dog, float x, float y, float scale) {
 
 
 MatCv CovEstimator::hessian(MatCv dog, int row, int col) {
-
+/* dog is the detected dog image, not the entire pyramid */
 	int r, c;
-	/*	r = row; c = col;
-	float v   =   pixval32f( dog, r, c );
-	float dxx = ( pixval32f( dog, r, c+1 ) +
-	pixval32f( dog, r, c-1 ) - 2 * v );
-	float dyy = ( pixval32f( dog, r+1, c ) +
-	pixval32f( dog, r-1, c ) - 2 * v );
-	float dxy = ( pixval32f( dog, r+1, c+1 ) -
-	pixval32f( dog, r+1, c-1 ) -
-	pixval32f( dog, r-1, c+1 ) +
-	pixval32f( dog, r-1, c-1 ) ) / 4.0;
-
-	*/	// ---
 	float v, dxx = 0, dyy = 0, dxy = 0;
 	float w[3][3] = { 0.0449f,    0.1221f,    0.0449f,
 		0.1221f,    0.3319f,    0.1221f,

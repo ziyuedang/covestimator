@@ -18,7 +18,7 @@
 #include "openMVG/features/sift/sift_KeypointExtractor.hpp" //Modified version of the original openMVG - removed protected function
 
 // Zeisl's method
-#include "covEstimator.h"
+//#include "covEstimator.h"
 
 //own
 #include "covArgEvaluator.h"
@@ -82,7 +82,7 @@ int main(int argc, char* argv[])
 	Octave octave;
 	octave_gen.SetImage(image);
 
-	/*** GSS and DoGs output to image files ***/
+	/*** GSS output to image files ***/
 	cerr << "Octave computation started" << endl;
 	uint8_t octave_id = 0;
 	while (octave_gen.NextOctave(octave))
@@ -98,34 +98,32 @@ int main(int argc, char* argv[])
 		++octave_id;
 	}
 
-
-	/*** Creating image pyramid in IplImage ***/
-	int octaves = 0, intervals = 3;
-	Image<unsigned char> dog_in;
-	vector<vector<MatCv>> dog_pyr;
-	octaves = 6;
-	// Read DoGs from  imagefiles 
-
+	/*** Read GSS and compute Difference of Gaussian (DoG) ***/
+	int octaves = 6, intervals = 3;
+	vector<vector<MatCv>> dog_pyr(octaves, vector<MatCv>(intervals + supplementary_images - 1));
 	for (int o = 0; o < octaves; o++) {
-		for (int i = 1; i < intervals + supplementary_images - 1; i++)
-		{	
-			stringstream str;
-			str << "DoG_out_00" << to_string(o) << "_s" << "00" << i << ".png";
-			// testing this
-			dog_pyr[o][i] = cv::imread(str.str().c_str(), cv::IMREAD_UNCHANGED);
+		for (int i = 1; i < intervals + supplementary_images - 1; i++) {
+			stringstream str1;
+			stringstream str2;
+			str1 << "gaussian_octave_" << to_string(o) << "_" << i - 1 << ".png";
+			str2 << "gaussian_octave_" << to_string(o) << "_" << i << ".png";
+			MatCv dog_prev = cv::imread(str1.str().c_str(), cv::IMREAD_UNCHANGED);
+			MatCv dog_cur = cv::imread(str2.str().c_str(), cv::IMREAD_UNCHANGED);
+			dog_pyr[o][i] = dog_cur - dog_prev;			
 		}
 	}
-	cout << "size of dog_pyr is: " << dog_pyr.size() << endl;
-	string filename_out = filename + ".cov";
-	ofstream& outfile = CovOut::initializeFile(filename_out);
-	/*** Estimating the covariances for the keypoints ***/
-	if (arg.verbose)
-		cout << "COV Covariance estimation - Writing data to file " << filename << endl;
-	CovEstimator estimator(dog_pyr, octaves, intervals);
-	for (unsigned int k = 0; k < vec_feats.size(); k++) {
-		MatCv cov = estimator.getCovAt(dog_pyr, vec_feats[k].x(), vec_feats[k].y(), vec_feats[k].scale());	
-		cout << cov << endl;
-		// Output cov to file
-		CovOut::write(outfile, cov);
-	}
+
+
+//	string filename_out = filename + ".cov";
+//	ofstream& outfile = CovOut::initializeFile(filename_out);
+//	/*** Estimating the covariances for the keypoints ***/
+//	if (arg.verbose)
+//		cout << "COV Covariance estimation - Writing data to file " << filename << endl;
+//	CovEstimator estimator(dog_pyr, octaves, intervals);
+//	for (unsigned int k = 0; k < vec_feats.size(); k++) {
+//		MatCv cov = estimator.getCovAt(vec_feats[k].x(), vec_feats[k].y(), vec_feats[k].scale());	
+//		cout << cov << endl;
+//		// Output cov to file
+//		CovOut::write(outfile, cov);
+//	}
 }

@@ -18,23 +18,27 @@ public:
 		
 		octaves = octvs;
 		intervals = intvls;
+		detectPyr = pyr;
 		MatCv H(2, 2, CV_32FC1);
 		MatCv cov(2, 2, CV_32FC1);
 		MatCv evals(2, 1, CV_32FC1);
 		MatCv evecs(2, 2, CV_32FC1);
 	};
 
-	MatCv getCovAt(MatCv dog, float x, float y, float scale);
+
+	const MatCv getImageFromPyramid(int octv, int intvl);
+	MatCv getCovAt(float x, float y, float scale);
 
 
 private:
 	/*** Methods ***/
 	MatCv hessian(const MatCv img, int r, int c);
 
+
 	/*** Member variables ***/
 	int type;
 	int octaves, intervals;
-
+	vector<vector<MatCv>> detectPyr;
 	MatCv H;
 	MatCv cov;
 	MatCv evals;

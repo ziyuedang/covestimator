@@ -18,24 +18,24 @@
     <ClInclude Include="covArgEvaluator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="covEstimator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="covOut.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="definitions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="covEstimator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="covEstimator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="covOut.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="covEstimator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

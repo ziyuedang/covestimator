@@ -12,7 +12,7 @@ ofstream& CovOut::initializeFile(string fn) {
 	return initializeFile((char*)fn.c_str());
 }
 
-void CovOut::write(ofstream& outfile, MatCv* cov) {
+void CovOut::write(ofstream& outfile, MatCv cov) {
 	/* File format:
 	covxx covxy covyy
 	...
@@ -20,9 +20,9 @@ void CovOut::write(ofstream& outfile, MatCv* cov) {
 
 
 	// covariance information
-	outfile << cov->at<float>(0, 0) << "\t";
-	outfile << cov->at<float>(0, 1) << "\t";
-	outfile << cov->at<float>(1, 1) << "\t";
+	outfile << cov.at<float>(0, 0) << "\t";
+	outfile << cov.at<float>(0, 1) << "\t";
+	outfile << cov.at<float>(1, 1) << "\t";
 	outfile << endl;
 }
 

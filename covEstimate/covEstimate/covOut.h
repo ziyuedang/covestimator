@@ -14,6 +14,6 @@ class CovOut {
 public:
 	static ofstream& initializeFile(char* filename);
 	static ofstream& initializeFile(string fn);
-	static void write(ofstream& outfile, MatCv* cov);
+	static void write(ofstream& outfile, MatCv cov);
 	static void closeFile(ofstream& outfile);
 };

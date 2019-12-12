@@ -172,6 +172,7 @@ struct HierarchicalGaussianScaleSpace: public Octaver<Octave>
       }
       
       // Debug: Export DoG scale space on disk
+	  /*
       for (int s = 0; s < octave.sigmas.size(); ++s)
       {
         std::stringstream os;
@@ -179,7 +180,7 @@ struct HierarchicalGaussianScaleSpace: public Octaver<Octave>
         image::WriteImage(os.str().c_str(), octave.slices[s]);
       }
       
-
+	  */
       // Prepare for next octave computation -> Decimation
       ++m_cur_octave_id;
       if (m_cur_octave_id < m_nb_octave)
