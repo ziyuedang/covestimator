@@ -14,31 +14,29 @@ using MatCv = cv::Mat;
 class CovEstimator {
 
 public:
-	CovEstimator(vector<vector<MatCv>> pyr, int octvs, int intvls) {
-		
+	CovEstimator(std::vector<std::vector<MatCv>> pyr, int octvs, int intvls) {
+		detectPyr = pyr;
 		octaves = octvs;
 		intervals = intvls;
-		detectPyr = pyr;
 		MatCv H(2, 2, CV_32FC1);
 		MatCv cov(2, 2, CV_32FC1);
 		MatCv evals(2, 1, CV_32FC1);
 		MatCv evecs(2, 2, CV_32FC1);
 	};
 
-
-	const MatCv getImageFromPyramid(int octv, int intvl);
+	MatCv getImageFromPyramid(int octv, int intvls);
 	MatCv getCovAt(float x, float y, float scale);
 
 
 private:
 	/*** Methods ***/
-	MatCv hessian(const MatCv img, int r, int c);
+	MatCv hessian(MatCv img, int r, int c);
 
 
 	/*** Member variables ***/
 	int type;
 	int octaves, intervals;
-	vector<vector<MatCv>> detectPyr;
+	std::vector<std::vector<MatCv>> detectPyr;
 	MatCv H;
 	MatCv cov;
 	MatCv evals;

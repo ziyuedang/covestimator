@@ -1,14 +1,12 @@
 #include "CovEstimator.h"
-
 using namespace std;
 using namespace cv;
 
 #define PI		3.14159265f
 
-const MatCv CovEstimator::getImageFromPyramid(int octv, int intvl) {
-	/* Return the dog layer corresponding to the correct octave and interval.
-	*/
-	return detectPyr[octv][intvl];
+MatCv CovEstimator::getImageFromPyramid(int octv, int intvls) {
+	// Retrieve the dog at octv, intvls [Tested, works]
+	return detectPyr[octv][intvls];
 }
 
 MatCv CovEstimator::getCovAt(float x, float y, float scale) {
@@ -32,7 +30,7 @@ MatCv CovEstimator::getCovAt(float x, float y, float scale) {
 
 	// determine hessan at that point and calculate and scale covariance matrix
 	H = hessian(img, row, col);
-	invert(H, cov, DECOMP_SVD);
+	invert(H, cov, CV_SVD_SYM);
 
 	// Hessian is estimated at particular octave and interval, thus scaling needed, which
 	// adapts for the octave and subinterval
@@ -41,7 +39,7 @@ MatCv CovEstimator::getCovAt(float x, float y, float scale) {
 	// cvScale( cov, cov, pow(scale, 2) / norm );
 	/*** or fixed value: */
 	cov.convertTo(cov, -1, pow(2.0f, (octv + subintv / intervals) * 2) * 0.01);
-	MatCv evals, evecs, vt;
+	MatCv vt;
 	SVD::compute(cov, evals, evecs, vt);
 	ev1 = evals.at<float>(0, 0);
 	ev2 = evals.at<float>(1, 0);

@@ -15,10 +15,10 @@
 #include "openMVG/image/image_io.hpp"
 #include "openMVG/features/feature.hpp"
 #include "openMVG/features/sift/SIFT_Anatomy_Image_Describer.hpp"
-#include "openMVG/features/sift/sift_KeypointExtractor.hpp" //Modified version of the original openMVG - removed protected function
+#include "openMVG/features/sift/sift_KeypointExtractor.hpp" 
 
 // Zeisl's method
-//#include "covEstimator.h"
+#include "covEstimator.h"
 
 //own
 #include "covArgEvaluator.h"
@@ -99,6 +99,7 @@ int main(int argc, char* argv[])
 	}
 
 	/*** Read GSS and compute Difference of Gaussian (DoG) ***/
+
 	int octaves = 6, intervals = 3;
 	vector<vector<MatCv>> dog_pyr(octaves, vector<MatCv>(intervals + supplementary_images - 1));
 	for (int o = 0; o < octaves; o++) {
@@ -112,18 +113,18 @@ int main(int argc, char* argv[])
 			dog_pyr[o][i] = dog_cur - dog_prev;			
 		}
 	}
-
-
-//	string filename_out = filename + ".cov";
-//	ofstream& outfile = CovOut::initializeFile(filename_out);
-//	/*** Estimating the covariances for the keypoints ***/
-//	if (arg.verbose)
-//		cout << "COV Covariance estimation - Writing data to file " << filename << endl;
-//	CovEstimator estimator(dog_pyr, octaves, intervals);
-//	for (unsigned int k = 0; k < vec_feats.size(); k++) {
-//		MatCv cov = estimator.getCovAt(vec_feats[k].x(), vec_feats[k].y(), vec_feats[k].scale());	
-//		cout << cov << endl;
+	string filename_out = filename + ".cov";
+	ofstream& outfile = CovOut::initializeFile(filename_out);
+	/*** estimating the covariances for the keypoints ***/
+	if (arg.verbose)
+		cout << "cov covariance estimation - writing data to file " << filename << endl;
+	CovEstimator estimator(dog_pyr, octaves, intervals);
+	for (int k = 0; k < vec_feats.size(); k++) {
+		MatCv cov = estimator.getCovAt(vec_feats[k].x(), vec_feats[k].y(), vec_feats[k].scale());	
+		cout << cov << endl;
+		cout << "size of cov is: " << cov.size() << endl;
 //		// Output cov to file
 //		CovOut::write(outfile, cov);
-//	}
+	}
 }
+
