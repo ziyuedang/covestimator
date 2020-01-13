@@ -27,9 +27,9 @@ MatCv CovEstimator::getCovAt(float x, float y, float scale) {
 		col = cvRound(x / pow(2.0, octv - 1));
 		row = cvRound(y / pow(2.0, octv - 1));
 		MatCv img = getImageFromPyramid(octv, intv);
-
 	// determine hessan at that point and calculate and scale covariance matrix
-	H = hessian(img, row, col);
+	MatCv H = hessian(img, row, col);
+	cout << "H= " << H << endl;
 	invert(H, cov, CV_SVD_SYM);
 
 	// Hessian is estimated at particular octave and interval, thus scaling needed, which
@@ -64,24 +64,17 @@ MatCv CovEstimator::hessian(MatCv dog, int row, int col) {
 /* dog is the detected dog image, not the entire pyramid */
 	int r, c;
 	float v, dxx = 0, dyy = 0, dxy = 0;
-	float w[3][3] = { 0.0449f,    0.1221f,    0.0449f,
-		0.1221f,    0.3319f,    0.1221f,
-		0.0449f,    0.1221f,    0.0449f };
 
-	for (int i = 0; i < 3; i++)
-		for (int j = 0; j < 3; j++) {
-			r = row + (j - 1); c = col + (i - 1);
-			v = dog.at<float>(r, c);
-			dxx += w[i][j] * (dog.at<float>(r, c + 1) +
-				dog.at<float>(r, c - 1) - 2 * v);
-			dyy += w[i][j] * (dog.at<float>(r + 1, c) +
-				dog.at<float>(r - 1, c) - 2 * v);
-			dxy += w[i][j] * (dog.at<float>(r + 1, c + 1) -
-				dog.at<float>(r + 1, c - 1) -
-				dog.at<float>(r - 1, c + 1) +
-				dog.at<float>(r - 1, c - 1)) / 4.0f;
-
-		}
+	r = row;
+	c = col;
+	v = dog.at<float>(r, c);
+	dxx = dog.at<float>(r, c + 1) + dog.at<float>(r, c - 1) - 2 * v;
+	dyy = dog.at<float>(r + 1, c) + dog.at<float>(r - 1, c) - 2 * v;
+	dxy = (dog.at<float>(r + 1, c + 1) - 
+		dog.at<float>(r + 1, c - 1) - 
+		dog.at<float>(r - 1, c + 1) + 
+		dog.at<float>(r - 1, c - 1) )/ 4.0f;
+	MatCv H(2, 2, CV_32FC1);
 	H.at<float>(0, 0) = -dxx;
 	H.at<float>(0, 1) = -dxy;
 	H.at<float>(1, 0) = -dxy;

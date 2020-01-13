@@ -102,17 +102,23 @@ int main(int argc, char* argv[])
 
 	int octaves = 6, intervals = 3;
 	vector<vector<MatCv>> dog_pyr(octaves, vector<MatCv>(intervals + supplementary_images - 1));
+	MatCv norm_dog_prev;
+	MatCv norm_dog_cur;
 	for (int o = 0; o < octaves; o++) {
 		for (int i = 1; i < intervals + supplementary_images - 1; i++) {
 			stringstream str1;
 			stringstream str2;
 			str1 << "gaussian_octave_" << to_string(o) << "_" << i - 1 << ".png";
 			str2 << "gaussian_octave_" << to_string(o) << "_" << i << ".png";
-			MatCv dog_prev = cv::imread(str1.str().c_str(), cv::IMREAD_UNCHANGED);
-			MatCv dog_cur = cv::imread(str2.str().c_str(), cv::IMREAD_UNCHANGED);
-			dog_pyr[o][i] = dog_cur - dog_prev;			
+			MatCv dog_prev = cv::imread(str1.str().c_str(), cv::IMREAD_GRAYSCALE);
+			MatCv dog_cur = cv::imread(str2.str().c_str(), cv::IMREAD_GRAYSCALE);
+			dog_prev.convertTo(norm_dog_prev, CV_32F, 1.0 / 255, 0);
+			dog_cur.convertTo(norm_dog_cur, CV_32F, 1.0 / 255, 0);
+			dog_pyr[o][i] = norm_dog_cur - norm_dog_prev;	// correct scale [0 - 1]
 		}
 	}
+
+	// dog_pyr tested, dimension is correct
 	string filename_out = filename + ".cov";
 	ofstream& outfile = CovOut::initializeFile(filename_out);
 	/*** estimating the covariances for the keypoints ***/
@@ -122,7 +128,6 @@ int main(int argc, char* argv[])
 	for (int k = 0; k < vec_feats.size(); k++) {
 		MatCv cov = estimator.getCovAt(vec_feats[k].x(), vec_feats[k].y(), vec_feats[k].scale());	
 		cout << cov << endl;
-		cout << "size of cov is: " << cov.size() << endl;
 //		// Output cov to file
 //		CovOut::write(outfile, cov);
 	}
