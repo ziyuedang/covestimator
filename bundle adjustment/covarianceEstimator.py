@@ -14,7 +14,11 @@ from scipy.linalg import inv
 from numpy.linalg import multi_dot
 
 
+<<<<<<< HEAD
 root_path, extrinsics, intrinsics, coords_3d, views_meta, control_points = IO.read_sfm('sfm.json', 'D:/SFM/covestimator/Data/')
+=======
+root_path, extrinsics, intrinsics, coords_3d, views_meta, control_points = read_sfm('sfm.json', 'D:/Documents/Research/covestimator/Data/')
+>>>>>>> 4b61234516656f6b3d70d9cd72cd0d60a0de8ff5
 
 
 # 3-D coordinates corresponding to 2-D image observations
@@ -29,6 +33,7 @@ def initParams(views_meta, coords_3d, extrinsics, intrinsics):
     img_obs = []
     n_imgs = len(views_meta)
 
+<<<<<<< HEAD
     # XYZ_3D - flattened 3D object point coordinates
     XYZ_3D = np.empty((0, 0))
     for i in range(0, len(coords_3d)):
@@ -62,6 +67,28 @@ def initParams(views_meta, coords_3d, extrinsics, intrinsics):
                 temp.append(a)
         obs_count.append(len(temp))
         merged_obs.append(temp)
+=======
+# list of 2-D image observations for all images
+    
+merged_obs = []
+for i in range(0, n_imgs):
+    temp = np.array([])
+    a = []
+    b = 0
+    for d in range(0, len(img_obs)):
+        keyID = img_obs[d]['key']
+        if keyID == i:
+            a = img_obs[d]['value']['x']
+            b = img_obs[d]['index_3D']
+            c = np.array(a.append(b))
+            temp = np.append(temp, c)
+    merged_obs.append(temp)
+
+
+            
+    
+# 3-D coordinates corresponding to 2-D image observations
+>>>>>>> 4b61234516656f6b3d70d9cd72cd0d60a0de8ff5
 
 
     # Number of 2D image observations
