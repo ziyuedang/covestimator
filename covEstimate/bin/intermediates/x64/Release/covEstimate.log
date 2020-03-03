@@ -1,0 +1,226 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (D:\SFM\covestimator\covEstimate\bin\intermediates\x64\Release\) contains files shared from another project (bundle_adjustment.vcxproj, covEstimate.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  covEstimator.cpp
+  covOut.cpp
+  main.cpp
+D:\SFM\covestimator\covEstimate\third party\openMVG/matching/metric_hamming.hpp(66): warning C4814: 'openMVG::matching::Hamming<T>::popcnt': in C++14 'constexpr' will not imply 'const'; consider explicitly specifying 'const'
+  D:\SFM\covestimator\covEstimate\third party\openMVG/matching/metric_hamming.hpp(115): note: see reference to class template instantiation 'openMVG::matching::Hamming<T>' being compiled
+D:\SFM\covestimator\covEstimate\third party\openMVG/matching/metric_hamming.hpp(77): warning C4814: 'openMVG::matching::Hamming<T>::popcnt': in C++14 'constexpr' will not imply 'const'; consider explicitly specifying 'const'
+D:\SFM\covestimator\covEstimate\third party\openMVG/image/image_filtering.hpp(320): warning C4244: 'initializing': conversion from 'double' to 'std::size_t', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/image/sample.hpp(403): warning C4244: 'return': conversion from 'const openMVG::image::RealPixel<float>::real_type' to 'openMVG::image::RealPixel<float>::base_type', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/hierarchical_gaussian_scale_space.hpp(123): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/hierarchical_gaussian_scale_space.hpp(123): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/hierarchical_gaussian_scale_space.hpp(157): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(135): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(135): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(166): warning C4305: '+=': truncation from 'double' to 'float'
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(172): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(174): warning C4305: '-=': truncation from 'double' to 'float'
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(219): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(249): warning C4244: 'initializing': conversion from 'Eigen::EigenBase<Derived>::Index' to 'int', possible loss of data
+          with
+          [
+              Derived=Eigen::Matrix<float,-1,1,0,-1,1>
+          ]
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(249): warning C4244: 'initializing': conversion from 'Eigen::EigenBase<Derived>::Index' to 'const int', possible loss of data
+          with
+          [
+              Derived=Eigen::Matrix<float,-1,1,0,-1,1>
+          ]
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(294): warning C4244: 'initializing': conversion from 'Eigen::EigenBase<Derived>::Index' to 'int', possible loss of data
+          with
+          [
+              Derived=Eigen::Matrix<float,-1,1,0,-1,1>
+          ]
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(294): warning C4244: 'initializing': conversion from 'Eigen::EigenBase<Derived>::Index' to 'const int', possible loss of data
+          with
+          [
+              Derived=Eigen::Matrix<float,-1,1,0,-1,1>
+          ]
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(417): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(417): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(446): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(446): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(447): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(447): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(448): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(448): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(451): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(451): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(452): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(452): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(97): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(97): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(131): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(135): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(136): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(137): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(138): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(139): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(140): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(141): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(142): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(144): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(145): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(146): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(147): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(148): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(149): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(150): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(151): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(152): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(154): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(155): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(156): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(157): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(158): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(159): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(160): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(161): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(162): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(203): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(203): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(326): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_KeypointExtractor.hpp(326): warning C4244: 'initializing': conversion from 'int' to 'const float', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/SIFT_Anatomy_Image_Describer.hpp(190): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/matching/metric_hamming.hpp(66): warning C4814: 'openMVG::matching::Hamming<unsigned char>::popcnt': in C++14 'constexpr' will not imply 'const'; consider explicitly specifying 'const'
+  D:\SFM\covestimator\covEstimate\third party\openMVG/features/binary_regions.hpp(115): note: see reference to class template instantiation 'openMVG::matching::Hamming<unsigned char>' being compiled
+  D:\SFM\covestimator\covEstimate\third party\openMVG/features/binary_regions.hpp(109): note: while compiling class template member function 'double openMVG::features::Binary_Regions<openMVG::features::SIOPointFeature,64>::SquaredDescriptorDistance(std::size_t,const openMVG::features::Regions *,std::size_t) const'
+  D:\SFM\covestimator\covEstimate\third party\openMVG/features/regions_factory.hpp(34): note: see reference to class template instantiation 'openMVG::features::Binary_Regions<openMVG::features::SIOPointFeature,64>' being compiled
+D:\SFM\covestimator\covEstimate\third party\openMVG/matching/metric_hamming.hpp(77): warning C4814: 'openMVG::matching::Hamming<unsigned char>::popcnt': in C++14 'constexpr' will not imply 'const'; consider explicitly specifying 'const'
+D:\SFM\covestimator\covEstimate\third party\openMVG/image/image_filtering.hpp(282): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/hierarchical_gaussian_scale_space.hpp(105): note: see reference to function template instantiation 'void openMVG::image::ImageGaussianFilter<openMVG::image::Image<float>>(const Image &,const double,Image &,const int)' being compiled
+          with
+          [
+              Image=openMVG::image::Image<float>
+          ]
+D:\SFM\covestimator\covEstimate\third party\openMVG/image/image_filtering.hpp(282): warning C4244: 'initializing': conversion from 'double' to 'const int', possible loss of data
+D:\SFM\covestimator\covEstimate\third party\openMVG/image/image_convolution.hpp(89): warning C4244: 'initializing': conversion from 'Eigen::EigenBase<Derived>::Index' to 'int', possible loss of data
+          with
+          [
+              Derived=Eigen::Matrix<float,-1,-1,1,-1,-1>
+          ]
+  D:\SFM\covestimator\covEstimate\third party\openMVG/image/image_filtering.hpp(50): note: see reference to function template instantiation 'void openMVG::image::ImageHorizontalConvolution<Image,Image,openMVG::Vec3>(const ImageTypeIn &,const Kernel &,ImageTypeOut &)' being compiled
+          with
+          [
+              Image=openMVG::image::Image<float>,
+              ImageTypeIn=openMVG::image::Image<float>,
+              Kernel=openMVG::Vec3,
+              ImageTypeOut=openMVG::image::Image<float>
+          ]
+  D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(145): note: see reference to function template instantiation 'void openMVG::image::ImageXDerivative<openMVG::image::Image<float>>(const Image &,Image &,const bool)' being compiled
+          with
+          [
+              Image=openMVG::image::Image<float>
+          ]
+D:\SFM\covestimator\covEstimate\third party\openMVG/image/image_convolution.hpp(89): warning C4244: 'initializing': conversion from 'Eigen::EigenBase<Derived>::Index' to 'const int', possible loss of data
+          with
+          [
+              Derived=Eigen::Matrix<float,-1,-1,1,-1,-1>
+          ]
+D:\SFM\covestimator\covEstimate\third party\openMVG/image/image_convolution.hpp(90): warning C4244: 'initializing': conversion from 'Eigen::EigenBase<Derived>::Index' to 'int', possible loss of data
+          with
+          [
+              Derived=Eigen::Matrix<float,-1,-1,1,-1,-1>
+          ]
+D:\SFM\covestimator\covEstimate\third party\openMVG/image/image_convolution.hpp(90): warning C4244: 'initializing': conversion from 'Eigen::EigenBase<Derived>::Index' to 'const int', possible loss of data
+          with
+          [
+              Derived=Eigen::Matrix<float,-1,-1,1,-1,-1>
+          ]
+D:\SFM\covestimator\covEstimate\third party\openMVG/image/image_convolution.hpp(94): warning C4244: 'initializing': conversion from 'Eigen::EigenBase<Derived>::Index' to 'int', possible loss of data
+          with
+          [
+              Derived=Eigen::Matrix<double,3,1,0,3,1>
+          ]
+D:\SFM\covestimator\covEstimate\third party\openMVG/image/image_convolution.hpp(94): warning C4244: 'initializing': conversion from 'Eigen::EigenBase<Derived>::Index' to 'const int', possible loss of data
+          with
+          [
+              Derived=Eigen::Matrix<double,3,1,0,3,1>
+          ]
+D:\SFM\covestimator\covEstimate\third party\openMVG/image/image_convolution.hpp(133): warning C4244: 'initializing': conversion from 'Eigen::EigenBase<Derived>::Index' to 'int', possible loss of data
+          with
+          [
+              Derived=Eigen::Matrix<double,3,1,0,3,1>
+          ]
+  D:\SFM\covestimator\covEstimate\third party\openMVG/image/image_filtering.hpp(70): note: see reference to function template instantiation 'void openMVG::image::ImageVerticalConvolution<Image,Image,openMVG::Vec3>(const ImageTypeIn &,const Kernel &,ImageTypeOut &)' being compiled
+          with
+          [
+              Image=openMVG::image::Image<float>,
+              ImageTypeIn=openMVG::image::Image<float>,
+              Kernel=openMVG::Vec3,
+              ImageTypeOut=openMVG::image::Image<float>
+          ]
+  D:\SFM\covestimator\covEstimate\third party\openMVG/features/sift/sift_DescriptorExtractor.hpp(146): note: see reference to function template instantiation 'void openMVG::image::ImageYDerivative<openMVG::image::Image<float>>(const Image &,Image &,const bool)' being compiled
+          with
+          [
+              Image=openMVG::image::Image<float>
+          ]
+D:\SFM\covestimator\covEstimate\third party\openMVG/image/image_convolution.hpp(133): warning C4244: 'initializing': conversion from 'Eigen::EigenBase<Derived>::Index' to 'const int', possible loss of data
+          with
+          [
+              Derived=Eigen::Matrix<double,3,1,0,3,1>
+          ]
+D:\SFM\covestimator\covEstimate\third party\openMVG/image/image_convolution.hpp(136): warning C4244: 'initializing': conversion from 'Eigen::EigenBase<Derived>::Index' to 'int', possible loss of data
+          with
+          [
+              Derived=Eigen::Matrix<float,-1,-1,1,-1,-1>
+          ]
+D:\SFM\covestimator\covEstimate\third party\openMVG/image/image_convolution.hpp(136): warning C4244: 'initializing': conversion from 'Eigen::EigenBase<Derived>::Index' to 'const int', possible loss of data
+          with
+          [
+              Derived=Eigen::Matrix<float,-1,-1,1,-1,-1>
+          ]
+D:\SFM\covestimator\covEstimate\third party\openMVG/image/image_convolution.hpp(137): warning C4244: 'initializing': conversion from 'Eigen::EigenBase<Derived>::Index' to 'int', possible loss of data
+          with
+          [
+              Derived=Eigen::Matrix<float,-1,-1,1,-1,-1>
+          ]
+D:\SFM\covestimator\covEstimate\third party\openMVG/image/image_convolution.hpp(137): warning C4244: 'initializing': conversion from 'Eigen::EigenBase<Derived>::Index' to 'const int', possible loss of data
+          with
+          [
+              Derived=Eigen::Matrix<float,-1,-1,1,-1,-1>
+          ]
+D:\SFM\covestimator\covEstimate\third party\openMVG/matching/metric_hamming.hpp(86): warning C4267: '+=': conversion from 'size_t' to 'openMVG::matching::Hamming<unsigned char>::ResultType', possible loss of data
+  D:\SFM\covestimator\covEstimate\third party\openMVG/matching/metric_hamming.hpp(99): note: see reference to function template instantiation 'openMVG::matching::Hamming<unsigned char>::ResultType openMVG::matching::Hamming<unsigned char>::popcntLoop<uint64_t>(const U *,const U *,std::size_t) const' being compiled
+          with
+          [
+              U=uint64_t
+          ]
+  D:\SFM\covestimator\covEstimate\third party\openMVG/matching/metric_hamming.hpp(99): note: see reference to function template instantiation 'openMVG::matching::Hamming<unsigned char>::ResultType openMVG::matching::Hamming<unsigned char>::popcntLoop<uint64_t>(const U *,const U *,std::size_t) const' being compiled
+          with
+          [
+              U=uint64_t
+          ]
+  D:\SFM\covestimator\covEstimate\third party\openMVG/features/binary_regions.hpp(117): note: see reference to function template instantiation 'openMVG::matching::Hamming<unsigned char>::ResultType openMVG::matching::Hamming<unsigned char>::operator ()<const unsigned char*,const unsigned char*>(Iterator1,Iterator2,std::size_t) const' being compiled
+          with
+          [
+              Iterator1=const unsigned char *,
+              Iterator2=const unsigned char *
+          ]
+  D:\SFM\covestimator\covEstimate\third party\openMVG/features/binary_regions.hpp(117): note: see reference to function template instantiation 'openMVG::matching::Hamming<unsigned char>::ResultType openMVG::matching::Hamming<unsigned char>::operator ()<const unsigned char*,const unsigned char*>(Iterator1,Iterator2,std::size_t) const' being compiled
+          with
+          [
+              Iterator1=const unsigned char *,
+              Iterator2=const unsigned char *
+          ]
+  D:\SFM\covestimator\covEstimate\third party\openMVG/features/binary_regions.hpp(109): note: while compiling class template member function 'double openMVG::features::Binary_Regions<openMVG::features::SIOPointFeature,64>::SquaredDescriptorDistance(std::size_t,const openMVG::features::Regions *,std::size_t) const'
+D:\SFM\covestimator\covEstimate\third party\openMVG/image/image_convolution_base.hpp(35): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  D:\SFM\covestimator\covEstimate\third party\openMVG/image/image_convolution.hpp(115): note: see reference to function template instantiation 'void openMVG::image::conv_buffer_<float,double>(T1 *,const T2 *,int,int)' being compiled
+          with
+          [
+              T1=float,
+              T2=double
+          ]
+  D:\SFM\covestimator\covEstimate\third party\openMVG/image/image_filtering.hpp(50): note: see reference to function template instantiation 'void openMVG::image::ImageHorizontalConvolution<Image,Image,openMVG::Vec3>(const ImageTypeIn &,const Kernel &,ImageTypeOut &)' being compiled
+          with
+          [
+              Image=openMVG::image::Image<float>,
+              ImageTypeIn=openMVG::image::Image<float>,
+              Kernel=openMVG::Vec3,
+              ImageTypeOut=openMVG::image::Image<float>
+          ]
+  Generating code
+  All 2490 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  covEstimate.vcxproj -> D:\SFM\covestimator\covEstimate\bin\x64\Release\sift_cov.exe
+  covEstimate.vcxproj -> D:\SFM\covestimator\covEstimate\bin\x64\Release\sift_cov.pdb (Full PDB)

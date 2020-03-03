@@ -18,9 +18,6 @@
     <ClCompile Include="dataIO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\third party\rply-1.1.4\rply.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\third party\rply-1.1.4\rply.h">

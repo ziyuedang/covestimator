@@ -137,7 +137,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\third party\rply-1.1.4\rply.c" />
     <ClCompile Include="dataIO.cpp" />
   </ItemGroup>
   <ItemGroup>

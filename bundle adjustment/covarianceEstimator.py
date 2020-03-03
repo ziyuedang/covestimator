@@ -139,7 +139,7 @@ def apply_distortion(interior, transformed_3D_point):
     return xp, yp, projected_point, r_coeff, c
     
         
-def cost_function(intrinsics, R, XYZc, XYZ_3D, interior):
+def cost_function(intrinsics, R, XYZc, XYZ_3D, interior, obs_2D):
     """
     This evaluates the image x, y based on collinearity.
     Input: camera parameters, exterior orientation parameters, points' coordinates
@@ -152,8 +152,9 @@ def cost_function(intrinsics, R, XYZc, XYZ_3D, interior):
     # collinearity equations
     # x = xp - c*(m11*(X - Xc) + m12*(Y - Yc) + m13*(Z - Zc))/(m31*(X - Xc) + m32*(Y - Yc) + m33*(Z - Zc))
     # y = yp - c*(m21*(X - Xc) + m22*(Y - Yc) + m23*(Z - Zc))/(m31*(X - Xc) + m32*(Y - Yc) + m33*(Z - Zc))
-    
-    return x, y    
+    residuals_x = xp + projected_point[0] * r_coeff * c - obs_2D[0]
+    residuals_y = yp + projected_point[1] * r_coeff * c - obs_2D[1]
+    return residuals_x, residuals_y
         
 
     
